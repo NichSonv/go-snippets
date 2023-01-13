@@ -20,22 +20,23 @@ var (
 func main() {
 	pl("Hello! Do you wish to fill this form? Y/N")
 	reader := bufio.NewReader(os.Stdin)
-	consign, err := reader.ReadString('\n')
 	var check bool
+	consign, err := reader.ReadString('\n')
 	if err != nil {
 		log.Fatal(err)
 	}
 	switch consign {
-	case "Y", "y":
-		check = true
-	case "N", "n":
-		check = false
-	default:
-		pl("Not a valid answer")
-		
+		case "Y","y":
+			check = true
+		case "N","n":
+			check = false
+		default:
+			pl("Not a valid answer! Try again.")
 	}
-	if !(check) {
+	if check == false {
 		pl("Alright then, have a great day!")
+	} else {
+		pl("Alright, let's continue!")
 	}
 
 
