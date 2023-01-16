@@ -178,5 +178,4 @@ func main() {
 	pers1.salary = 3245.5
 
 	pl(pers1)
-
 }
