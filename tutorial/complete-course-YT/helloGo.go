@@ -11,9 +11,16 @@ import (
 	"os"
 	"reflect"
 	"strconv"
+	"strings"
+	"unicode/utf8"
+	"time"
 )
 
-var pl = fmt.Println
+var (
+	pl = fmt.Println
+	pf = fmt.Printf
+	p = fmt.Print
+)
 
 func main() {
 	pl("Hello Go!")
@@ -74,4 +81,35 @@ func main() {
 		pl("Is it possible?")
 	}
 	pl("File:", name, "age", age)
+
+	// String methods
+
+	sv1 := "A word"
+	replacer := strings.NewReplacer("a", "Another")
+	sv2 := replacer.Replace(sv1)
+	pl(sv2)
+	// len(string)
+	// strings.Contains(sv2, "Another")
+	// strings.Index(sv2, "o")
+	pl("Replace :", strings.Replace(sv2, "o", "0", -1))
+	sv3 := "\nSome words\n"
+	sv3 = strings.TrimSpace(sv3)
+	pl(sv3)
+	// strings.Split
+	// strings.ToLower
+	// strings.ToUpper
+	// strings.HasPrefix("tacocat", "taco")
+	// strings.HasSuffix("tacocat", "cat")
+
+	// Runes
+	rStr := "abcdefg"
+	pl("Rune Count :", utf8.RuneCountInString(rStr))
+	for i, runeVal := range rStr {
+		pf("%d : %#U : %c\n", i, runeVal, runeVal)
+	}
+
+	// Time (very neat)
+	now := time.Now()
+	pl(now.Year(), now.Month(), now.Day())
+	pl(now.Hour(), now.Minute(), now.Second())
 }
