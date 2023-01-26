@@ -17,9 +17,9 @@ import (
 )
 
 var (
-	pl = fmt.Println
+	pl = fmt.Println	
 	pf = fmt.Printf
-	p = fmt.Print
+	// p = fmt.Print
 )
 
 func main() {
